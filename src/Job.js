@@ -1,11 +1,11 @@
 import React from "react";
 
-function Jobs() {
+function Job() {
     return (
         <div>
-            <h1>Jobs</h1>
+            <h1>Job placeholder</h1>
         </div>
     );
 }
 
-export default Jobs;
+export default Job;
