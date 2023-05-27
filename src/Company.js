@@ -1,9 +1,10 @@
 import React from "react";
 
-function Company() {
+function Company(props) {
     return (
         <div>
-            <h1>Company placeholder</h1>
+            <h1>{props.name}</h1>
+            <h2>{props.description}</h2>
         </div>
     );
 }
