@@ -1,11 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Company(props) {
+function Company({ company }) {
     return (
-        <div>
-            <h1>{props.name}</h1>
-            <h2>{props.description}</h2>
-        </div>
+        <Link
+            to={`${company.handle}`}
+            state={{ companyHandle: company.handle, key: company.handle }}
+        >
+            <div>
+                <h1>{company.name}</h1>
+                <h2>{company.description}</h2>
+            </div>
+        </Link>
     );
 }
 

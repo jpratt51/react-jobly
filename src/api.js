@@ -46,6 +46,15 @@ class JoblyApi {
         return res.company;
     }
 
+    static async findAll(name, minEmployees, maxEmployees) {
+        let endpoint;
+        name === " "
+            ? (endpoint = `companies?minEmployees=${+minEmployees}&maxEmployees=${+maxEmployees}`)
+            : (endpoint = `companies?name=${name}&minEmployees=${+minEmployees}&maxEmployees=${+maxEmployees}`);
+        let res = await this.request(endpoint);
+        return res.companies;
+    }
+
     // obviously, you'll add a lot here ...
 }
 
