@@ -56,21 +56,50 @@ class JoblyApi {
     }
 
     static async findAllJobs(title = "", minSalary = 0, hasEquity = false) {
-        let endpoint;
+        let data;
         title === ""
-            ? (endpoint = `jobs?minSalary=${minSalary}&hasEquity=${hasEquity}`)
-            : (endpoint = `jobs?title=${title}&minSalary=${+minSalary}&hasEquity=${hasEquity}`);
-        let res = await this.request(endpoint);
+            ? (data = { minSalary, hasEquity })
+            : (data = { title, minSalary, hasEquity });
+        let res = await this.request("jobs", data);
         return res.jobs;
+    }
+
+    static async register(username, password, firstName, lastName, email) {
+        let res = await this.request(
+            `auth/register`,
+            {
+                username,
+                password,
+                firstName,
+                lastName,
+                email,
+            },
+            "post"
+        );
+        JoblyApi.token = res.token;
+        return res.token;
+    }
+
+    static async login(username, password) {
+        let res = await this.request(
+            `auth/token`,
+            {
+                username,
+                password,
+            },
+            "post"
+        );
+        JoblyApi.token = res.token;
+        return res.token;
     }
 
     // obviously, you'll add a lot here ...
 }
 
 // for now, put token ("testuser" / "password" on class)
-JoblyApi.token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+// JoblyApi.token =
+//     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+//     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+//     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 export default JoblyApi;
