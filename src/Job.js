@@ -1,9 +1,11 @@
 import React from "react";
 
-function Job() {
+function Job({ job }) {
     return (
         <div>
-            <h1>Job placeholder</h1>
+            <p>
+                {job.title}, {job.salary}, {job.equity}
+            </p>
         </div>
     );
 }

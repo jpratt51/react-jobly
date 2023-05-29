@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import JoblyApi from "../api.js";
+import Job from "../Job.js";
 
 function CompanyDetails() {
     const [company, setCompany] = useState(null);
@@ -12,7 +13,6 @@ function CompanyDetails() {
             const res = await new JoblyApi().constructor.getCompany(
                 companyHandle
             );
-            console.log("UseEffect Res:", res);
             setCompany((c) => (c = res));
         }
         getCompanyByHandle();
@@ -23,11 +23,7 @@ function CompanyDetails() {
             <h2>{company ? company.name : "Loading..."}</h2>
             <h3>{company ? company.description : ""}</h3>
             {company
-                ? company.jobs.map((j, key) => (
-                      <p key={j.id}>
-                          {j.title}, {j.salary}, {j.equity}
-                      </p>
-                  ))
+                ? company.jobs.map((j, key) => <Job job={j} key={j.id} />)
                 : ""}
         </div>
     );

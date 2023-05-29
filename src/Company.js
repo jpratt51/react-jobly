@@ -5,7 +5,7 @@ function Company({ company }) {
     return (
         <Link
             to={`${company.handle}`}
-            state={{ companyHandle: company.handle, key: company.handle }}
+            state={{ companyHandle: company.handle }}
         >
             <div>
                 <h1>{company.name}</h1>

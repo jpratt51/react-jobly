@@ -31,8 +31,8 @@ function CompanyList() {
         e.preventDefault();
         const { name, minEmployees, maxEmployees } = formData;
         async function filterCompanies() {
-            let res = await new JoblyApi().constructor.findAll(
-                name || " ",
+            let res = await new JoblyApi().constructor.findAllCompanies(
+                name || "",
                 minEmployees || 0,
                 maxEmployees || 1000
             );
