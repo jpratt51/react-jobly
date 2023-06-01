@@ -18,17 +18,25 @@ import {
 } from "react-router-dom";
 
 function App() {
-    let userInfo = JSON.parse(localStorage.getItem("user"));
-    const [user, setUser] = useState(userInfo || "");
+    let userInfo = JSON.parse(localStorage.getItem("user")) || "";
+    const [user, setUser] = useState(userInfo);
 
     const login = (username, token) => {
         setUser({ username, token });
-        localStorage.setItem("token", JSON.stringify({ username, token }));
+        localStorage.setItem("user", JSON.stringify({ username, token }));
     };
 
     const logout = () => {
         setUser("");
         localStorage.clear();
+    };
+
+    const apply = (jobId) => {
+        setUser((data) => ({
+            ...data,
+            jobId,
+        }));
+        localStorage.setItem("user", JSON.stringify(user));
     };
 
     return (
@@ -52,7 +60,7 @@ function App() {
                             path="/companies/:handle"
                             element={
                                 user ? (
-                                    <CompanyDetails />
+                                    <CompanyDetails apply={apply} />
                                 ) : (
                                     <Navigate replace to="/" />
                                 )
@@ -61,10 +69,19 @@ function App() {
                         <Route
                             path="/jobs"
                             element={
-                                user ? <JobList /> : <Navigate replace to="/" />
+                                user ? (
+                                    <JobList apply={apply} />
+                                ) : (
+                                    <Navigate replace to="/" />
+                                )
                             }
                         />
-                        <Route path="/profile" element={<Profile />} />
+                        <Route
+                            path="/profile"
+                            element={
+                                user ? <Profile /> : <Navigate replace to="/" />
+                            }
+                        />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
                     </Routes>

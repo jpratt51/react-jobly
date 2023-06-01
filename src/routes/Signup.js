@@ -6,6 +6,7 @@ import UserContext from "../UserContext";
 function Signup() {
     const navigate = useNavigate();
     const { login } = useContext(UserContext);
+    const buttonText = "Sign Up";
     const INITIAL_STATE = {
         username: "",
         password: "",
@@ -92,7 +93,7 @@ function Signup() {
                     onChange={handleChange}
                 />
                 <br />
-                <button>Sign Up</button>
+                <button>{buttonText}</button>
             </form>
         </div>
     );

@@ -11,16 +11,18 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
  */
 
 class JoblyApi {
-    // the token for interactive with the API will be stored here.
     static token;
 
     static async request(endpoint, data = {}, method = "get") {
         console.debug("API Call:", endpoint, data, method);
 
+        let { token } = JSON.parse(localStorage.getItem("user")) || "";
+        console.log("JoblyApi token:", token);
+
         //there are multiple ways to pass an authorization token, this is how you pass it in the header.
         //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
         const url = `${BASE_URL}/${endpoint}`;
-        const headers = { Authorization: `Bearer ${JoblyApi.token}` };
+        const headers = { Authorization: `Bearer ${token}` };
         const params = method === "get" ? data : {};
 
         try {
@@ -47,11 +49,11 @@ class JoblyApi {
     }
 
     static async findAllCompanies(name, minEmployees, maxEmployees) {
-        let endpoint;
+        let data;
         name === ""
-            ? (endpoint = `companies?minEmployees=${+minEmployees}&maxEmployees=${+maxEmployees}`)
-            : (endpoint = `companies?name=${name}&minEmployees=${+minEmployees}&maxEmployees=${+maxEmployees}`);
-        let res = await this.request(endpoint);
+            ? (data = { minEmployees, maxEmployees })
+            : (data = { name, minEmployees, maxEmployees });
+        let res = await this.request(data);
         return res.companies;
     }
 
@@ -76,7 +78,6 @@ class JoblyApi {
             },
             "post"
         );
-        JoblyApi.token = res.token;
         return res.token;
     }
 
@@ -89,8 +90,25 @@ class JoblyApi {
             },
             "post"
         );
-        JoblyApi.token = res.token;
         return res.token;
+    }
+
+    static async updateUser(password, firstName, lastName, email) {
+        const user = JSON.parse(localStorage.getItem("user"));
+        let data = {};
+        if (password) data["password"] = password;
+        if (firstName) data["firstName"] = firstName;
+        if (lastName) data["lastName"] = lastName;
+        if (email) data["email"] = email;
+        let res = await this.request(`users/${user.username}`, data, "patch");
+        return res;
+    }
+
+    static async getUserData() {
+        const user = JSON.parse(localStorage.getItem("user"));
+        let res = await this.request(`users/${user.username}`);
+        console.log(res);
+        return res;
     }
 
     // obviously, you'll add a lot here ...
