@@ -4,7 +4,6 @@ import JoblyApi from "../api.js";
 
 function Profile() {
     const navigate = useNavigate();
-    const buttonText = "Submit Changes";
     const INITIAL_STATE = {
         password: "",
         firstName: "",
@@ -94,7 +93,7 @@ function Profile() {
                     onChange={handleChange}
                 />
                 <br />
-                <button>{buttonText}</button>
+                <button>Submit Changes</button>
             </form>
         </div>
     );
