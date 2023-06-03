@@ -26,7 +26,7 @@ function NavBar() {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
                 <NavLink to="/" className="navbar-brand p-3">
                     Jobly
                 </NavLink>

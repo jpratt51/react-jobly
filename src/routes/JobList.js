@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import Job from "../Job";
 import JoblyApi from "../api.js";
+import "../JobList.css";
 
 function JobList() {
     const INITIAL_STATE = {
@@ -49,37 +50,48 @@ function JobList() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="title"></label>
-                <input
-                    id="title"
-                    type="text"
-                    name="title"
-                    value={formData.title}
-                    placeholder="Enter job title"
-                    onChange={handleChange}
-                />
-                <br />
-                <label htmlFor="minSalary">Minimum Salary</label>
-                <input
-                    id="minSalary"
-                    type="number"
-                    name="minSalary"
-                    value={formData.minSalary}
-                    onChange={handleChange}
-                />
-                <br />
-                <label htmlFor="hasEquity">Has Equity</label>
-                <input
-                    id="hasEquity"
-                    type="checkbox"
-                    name="hasEquity"
-                    value={formData.hasEquity}
-                    onChange={handleChange}
-                />
-                <br />
-                <button>Search</button>
-            </form>
+            <div className="w-25 mx-auto job-form">
+                <form onSubmit={handleSubmit} className="">
+                    <div className="form-group">
+                        <label htmlFor="title">Job title</label>
+                        <input
+                            id="title"
+                            type="text"
+                            name="title"
+                            value={formData.title}
+                            placeholder="Enter job title"
+                            onChange={handleChange}
+                            className="form-control"
+                        />
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <label htmlFor="minSalary">Minimum Salary</label>
+                        <input
+                            id="minSalary"
+                            type="number"
+                            name="minSalary"
+                            value={formData.minSalary}
+                            onChange={handleChange}
+                            className="form-control"
+                        />
+                    </div>
+                    <br />
+                    <div className="form-check">
+                        <label htmlFor="hasEquity">Has Equity</label>
+                        <input
+                            id="hasEquity"
+                            type="checkbox"
+                            name="hasEquity"
+                            value={formData.hasEquity}
+                            onChange={handleChange}
+                            className="form-check-input"
+                        />
+                    </div>
+                    <br />
+                    <button className="btn btn-outline-success">Search</button>
+                </form>
+            </div>
             {jobs
                 ? jobs.map((j) => <Job job={j} key={j.id} />)
                 : "Loading Jobs ..."}

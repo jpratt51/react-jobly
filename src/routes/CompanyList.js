@@ -44,39 +44,50 @@ function CompanyList() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name"></label>
-                <input
-                    id="name"
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    placeholder="Enter company name"
-                    onChange={handleChange}
-                />
-                <br />
-                <label htmlFor="minEmployees"></label>
-                <input
-                    id="minEmployees"
-                    type="text"
-                    name="minEmployees"
-                    value={formData.minEmployees}
-                    placeholder="Minimum number of employees"
-                    onChange={handleChange}
-                />
-                <br />
-                <label htmlFor="maxEmployees"></label>
-                <input
-                    id="maxEmployees"
-                    type="text"
-                    name="maxEmployees"
-                    value={formData.maxEmployees}
-                    placeholder="Max number of employees"
-                    onChange={handleChange}
-                />
-                <br />
-                <button>Search</button>
-            </form>
+            <div className="w-25 mx-auto job-form">
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="name">Company Name</label>
+                        <input
+                            id="name"
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            placeholder="Enter company name"
+                            onChange={handleChange}
+                            className="form-control"
+                        />
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <label htmlFor="minEmployees">Minimum Employees</label>
+                        <input
+                            id="minEmployees"
+                            type="text"
+                            name="minEmployees"
+                            value={formData.minEmployees}
+                            placeholder="Minimum number of employees"
+                            onChange={handleChange}
+                            className="form-control"
+                        />
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <label htmlFor="maxEmployees">Maximum Employees</label>
+                        <input
+                            id="maxEmployees"
+                            type="text"
+                            name="maxEmployees"
+                            value={formData.maxEmployees}
+                            placeholder="Max number of employees"
+                            onChange={handleChange}
+                            className="form-control"
+                        />
+                    </div>
+                    <br />
+                    <button className="btn btn-outline-success">Search</button>
+                </form>
+            </div>
             {companies
                 ? companies.map((c) => <Company company={c} key={c.handle} />)
                 : "Loading Companies..."}

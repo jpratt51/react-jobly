@@ -1,17 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Company.css";
 
 function Company({ company }) {
     return (
-        <Link
-            to={`${company.handle}`}
-            state={{ companyHandle: company.handle }}
-        >
-            <div>
-                <h1>{company.name}</h1>
-                <h2>{company.description}</h2>
+        <div className="card w-75 mx-auto my-4 company-card">
+            <div className="card-body">
+                <Link
+                    to={`${company.handle}`}
+                    state={{ companyHandle: company.handle }}
+                    className="company-card-title"
+                >
+                    <p className="card-title">{company.name}</p>
+                </Link>
+                <p className="card-text">{company.description}</p>
             </div>
-        </Link>
+        </div>
     );
 }
 

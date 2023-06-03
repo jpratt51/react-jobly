@@ -50,49 +50,61 @@ function Profile() {
     };
 
     return (
-        <div>
+        <div className="w-25 mx-auto job-form">
             <form onSubmit={handleSubmit}>
-                <label htmlFor="firstName">First Name </label>
-                <input
-                    id="firstName"
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    placeholder={firstName || "Loading ..."}
-                    onChange={handleChange}
-                />
+                <div className="form-group">
+                    <label htmlFor="firstName">First Name </label>
+                    <input
+                        id="firstName"
+                        type="text"
+                        name="firstName"
+                        value={formData.firstName}
+                        placeholder={firstName || "Loading ..."}
+                        onChange={handleChange}
+                        className="form-control"
+                    />
+                </div>
                 <br />
-                <label htmlFor="lastName">Last Name </label>
-                <input
-                    id="lastName"
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    placeholder={lastName || "Loading ..."}
-                    onChange={handleChange}
-                />
+                <div className="form-group">
+                    <label htmlFor="lastName">Last Name </label>
+                    <input
+                        id="lastName"
+                        type="text"
+                        name="lastName"
+                        value={formData.lastName}
+                        placeholder={lastName || "Loading ..."}
+                        onChange={handleChange}
+                        className="form-control"
+                    />
+                </div>
                 <br />
-                <label htmlFor="email">Email </label>
-                <input
-                    id="email"
-                    type="text"
-                    name="email"
-                    value={formData.email}
-                    placeholder={email || "Loading ..."}
-                    onChange={handleChange}
-                />
+                <div className="form-group">
+                    <label htmlFor="email">Email </label>
+                    <input
+                        id="email"
+                        type="text"
+                        name="email"
+                        value={formData.email}
+                        placeholder={email || "Loading ..."}
+                        onChange={handleChange}
+                        className="form-control"
+                    />
+                </div>
                 <br />
-                <label htmlFor="password">Password </label>
-                <input
-                    id="password"
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    placeholder="password"
-                    onChange={handleChange}
-                />
+                <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        value={formData.password}
+                        placeholder="password"
+                        onChange={handleChange}
+                        className="form-control"
+                    />
+                </div>
                 <br />
-                <button>Submit Changes</button>
+                <button className="btn btn-outline-dark">Submit Changes</button>
             </form>
         </div>
     );
