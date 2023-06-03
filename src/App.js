@@ -47,7 +47,7 @@ function App() {
     };
 
     return (
-        <div className="App">
+        <div className="App has-bg-img">
             <UserContext.Provider value={{ user, login, logout, apply }}>
                 <NavBar />
                 <Routes>
