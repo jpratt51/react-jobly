@@ -17,7 +17,6 @@ class JoblyApi {
         console.debug("API Call:", endpoint, data, method);
 
         let { token } = JSON.parse(localStorage.getItem("user")) || "";
-        console.log("JoblyApi token:", token);
 
         //there are multiple ways to pass an authorization token, this is how you pass it in the header.
         //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
@@ -48,7 +47,7 @@ class JoblyApi {
         return res.company;
     }
 
-    static async findAllCompanies(name, minEmployees, maxEmployees) {
+    static async findAllCompanies(name = "", minEmployees, maxEmployees) {
         let data;
         name === ""
             ? (data = { minEmployees, maxEmployees })
@@ -107,7 +106,15 @@ class JoblyApi {
     static async getUserData() {
         const user = JSON.parse(localStorage.getItem("user"));
         let res = await this.request(`users/${user.username}`);
-        console.log(res);
+        return res;
+    }
+
+    static async apply(username, jobId) {
+        let res = await this.request(
+            `users/${username}/jobs/${jobId}`,
+            null,
+            "post"
+        );
         return res;
     }
 

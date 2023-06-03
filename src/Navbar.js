@@ -15,9 +15,10 @@ function NavBar() {
     return (
         <div>
             <nav className="NavBar">
-                <NavLink to="/jobs">Jobs</NavLink>
-                <NavLink to="/companies">Companies</NavLink>
-                <NavLink to="/profile">Profile</NavLink>
+                <NavLink to="/">Home </NavLink>
+                <NavLink to="/jobs">Jobs </NavLink>
+                <NavLink to="/companies">Companies </NavLink>
+                <NavLink to="/profile">Profile </NavLink>
                 {user ? logoutBtn : signup}
                 {!user ? login : null}
             </nav>

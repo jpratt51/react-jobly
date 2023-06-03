@@ -18,7 +18,6 @@ function Profile() {
     useEffect(() => {
         async function fetchUserData() {
             const res = await new JoblyApi().constructor.getUserData();
-            console.log(res);
             setFirstName((c) => (c = res.user.firstName));
             setLastName((c) => (c = res.user.lastName));
             setEmail((c) => (c = res.user.email));
