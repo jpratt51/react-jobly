@@ -1,13 +1,13 @@
 import "./App.css";
 import { React, useState, useEffect } from "react";
-import Home from "./routes/Home";
-import CompanyList from "./routes/CompanyList";
-import CompanyDetails from "./routes/CompanyDetails";
-import JobList from "./routes/JobList";
-import Profile from "./routes/Profile";
-import Login from "./routes/Login";
-import Signup from "./routes/Signup";
-import NavBar from "./Navbar";
+import Home from "./routes/Home.js";
+import CompanyList from "./routes/CompanyList.js";
+import CompanyDetails from "./routes/CompanyDetails.js";
+import JobList from "./routes/JobList.js";
+import Profile from "./routes/Profile.js";
+import Login from "./routes/Login.js";
+import Signup from "./routes/Signup.js";
+import NavBar from "./Navbar.js";
 import UserContext from "./UserContext.js";
 import JoblyApi from "./api.js";
 

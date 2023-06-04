@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import Job from "../Job";
+import Job from "../Job.js";
 import JoblyApi from "../api.js";
 import "../JobList.css";
 

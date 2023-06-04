@@ -1,6 +1,6 @@
 import { React, useContext } from "react";
 import JoblyApi from "./api.js";
-import UserContext from "./UserContext";
+import UserContext from "./UserContext.js";
 import "./Job.css";
 
 function Job({ job }) {

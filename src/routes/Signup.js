@@ -1,7 +1,7 @@
 import { React, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import JoblyApi from "../api.js";
-import UserContext from "../UserContext";
+import UserContext from "../UserContext.js";
 
 function Signup() {
     const navigate = useNavigate();
